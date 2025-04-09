@@ -9,7 +9,7 @@ bin/
 db/schema.rb
 log/**/*
 *.tmproj
-config/database.yml
+!config/database.yml
 public/system/*/*
 *~
 *.swo

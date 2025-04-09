@@ -1,3 +1,14 @@
+Rodando local:
+
+    docker compose up -d mysql
+    docker compose build redu
+    docker compose run redu bash
+    rake db:create db:migrate
+    exit
+    docker compose up -d redu
+
+---
+
 ## Redu Core
 
 Este repositório contem o core do Redu. O redu-core é a parte central da plataforma social educacional Redu. Também existem alguns subsistemas/serviços que estão em servidores/projetos/repositórios diferentes. A saber:

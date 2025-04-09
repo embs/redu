@@ -1,88 +1,5 @@
-GIT
-  remote: git://github.com/amatsuda/kaminari.git
-  revision: 7d209354119a8d5d273def3a7f5c6d011c4baa0a
-  specs:
-    kaminari (0.14.1)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
-
-GIT
-  remote: git://github.com/andi/simple-navigation.git
-  revision: 04315d6dd5a1bde7d02e4c49d89a90a283c67a31
-  specs:
-    simple-navigation (3.10.1)
-      activesupport (>= 2.3.2)
-
-GIT
-  remote: git://github.com/edgarjs/ajaxful-rating.git
-  revision: f22e2c38d601f8279e959fbe9a578b2314235505
-  branch: rails3
-  specs:
-    ajaxful_rating (3.0.0.beta8)
-
-GIT
-  remote: git://github.com/guiocavalcanti/scribd_fu.git
-  revision: 422926986f993bf4d72fcaa981dea221ecc86641
-  branch: without-scape
-  specs:
-    scribd_fu (2.0.11)
-      rscribd
-
-GIT
-  remote: git://github.com/jongilbraith/simple-private-messages.git
-  revision: 7ba7d3c9f7670ef3bddfc90390a49556a94f7013
-  specs:
-    simple-private-messages (0.0.0)
-
-GIT
-  remote: git://github.com/mbleigh/acts-as-taggable-on.git
-  revision: 18d95ef13700a90d9cf1eb40e24ceb0d3bfe90e7
-  specs:
-    acts-as-taggable-on (2.4.1.pre)
-      rails (>= 3, < 5)
-
-GIT
-  remote: git://github.com/patmaddox/no-peeping-toms.git
-  revision: 7e4148731caf9a09d8f3c91a8e5303d369753643
-  specs:
-    no_peeping_toms (2.1.3)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
-
-GIT
-  remote: git@github.com:redu/analytics.git
-  revision: 81559623dfcc9d9ddf90b4bc03ab31cc2216fd58
-  specs:
-    redu_analytics (0.0.3)
-      lazy_high_charts
-
-GIT
-  remote: git@github.com:redu/invitable.git
-  revision: 8f56a767909ab59220964304fb78364f49a42315
-  specs:
-    invitable (0.0.7)
-      rails (>= 3.0.10)
-
-GIT
-  remote: git@github.com:redu/vis_client.git
-  revision: 4e73d1de4004d60f63d891c8232e799664b2d5a4
-  branch: ruby-1-9-3
-  specs:
-    vis_client (0.0.7)
-      activerecord (~> 3)
-      bson_ext (~> 1.5)
-      configurable
-      delayed_job_mongoid
-      faraday
-      json
-      mongoid (~> 2.7)
-      roar
-      valium
-
 GEM
   remote: http://rubygems.org/
-  remote: http://gems.github.com/
-  remote: http://reduadmin:pomp64bozos@the-shire.herokuapp.com/
   specs:
     aasm (3.0.16)
     actionmailer (3.2.13)
@@ -107,7 +24,6 @@ GEM
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
     activerecord-import (0.3.1)
-      activerecord (~> 3.0)
       activerecord (~> 3.0)
     activeresource (3.2.13)
       activemodel (= 3.2.13)
@@ -160,7 +76,6 @@ GEM
     classy_enum (3.2.1)
       rails (>= 3.0)
     cocaine (0.3.2)
-    columnize (0.3.6)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -179,12 +94,6 @@ GEM
     dalli (2.6.3)
     date_validator (0.6.4)
       activemodel (>= 3)
-    debugger (1.6.0)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.1)
-    debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.2)
     deep_cloneable (1.5.1)
       activerecord (>= 3.1)
     delayed_job (3.0.5)
@@ -235,7 +144,6 @@ GEM
       ruby-hmac
     formatador (0.2.4)
     fssm (0.2.10)
-    hash-deep-merge (0.1.1)
     hashie (2.0.4)
     hike (1.2.2)
     hooks (0.3.1)
@@ -257,9 +165,6 @@ GEM
     json (1.8.0)
     jwt (0.1.6)
       multi_json (>= 1.0)
-    lazy_high_charts (1.4.2)
-      bundler (>= 1.0)
-      hash-deep-merge
     lazydoc (1.0)
     libv8 (3.11.8.17)
     mail (2.5.4)
@@ -367,8 +272,6 @@ GEM
       roar (~> 0.11.13)
       test_xml (>= 0.1.6)
     route_translator (3.1.0)
-    rscribd (1.3.0)
-      mime-types
     rsolr (1.0.9)
       builder (>= 2.1.2)
     rspec (2.13.0)
@@ -450,7 +353,6 @@ GEM
       addressable (>= 2.2.7)
       crack (>= 0.3.2)
     websocket (1.0.7)
-    whenever (0.8.2)
     xml-simple (1.1.2)
     yajl-ruby (1.1.0)
     zencoder (2.4.4)
@@ -462,9 +364,7 @@ PLATFORMS
 DEPENDENCIES
   aasm
   activerecord-import
-  acts-as-taggable-on!
   acts_as_tree (~> 0.1.1)
-  ajaxful_rating!
   asset_sync
   authlogic
   awesome_nested_fields
@@ -480,7 +380,6 @@ DEPENDENCIES
   daemons (= 1.0.10)
   dalli
   date_validator
-  debugger
   deep_cloneable
   delayed_job_mongoid
   destroy_soon
@@ -491,14 +390,11 @@ DEPENDENCIES
   ey_config
   factory_girl_rails
   humanizer
-  invitable!
   jasmine
   jquery-rails (>= 1.0.12)
-  kaminari!
   mime-types
   mysql2
   newrelic_rpm
-  no_peeping_toms!
   oauth-plugin (~> 0.4.0)
   omniauth
   omniauth-facebook
@@ -512,7 +408,6 @@ DEPENDENCIES
   rails_autolink
   rake (~> 10.0.4)
   redu-has_friends (~> 1.0)
-  redu_analytics!
   remotipart (~> 1.0)
   roar-rails
   route_translator
@@ -520,10 +415,7 @@ DEPENDENCIES
   ruby-prof
   rubyzip
   sass-rails (~> 3.2)
-  scribd_fu!
   shoulda-matchers (~> 1)
-  simple-navigation!
-  simple-private-messages (= 0.0.0)!
   simple_acts_as_list
   sunspot_rails
   sunspot_solr
@@ -534,8 +426,12 @@ DEPENDENCIES
   untied-publisher (~> 0.0.7.pre3)
   useragent
   valium
-  vis_client!
   webmock
-  whenever
   yajl-ruby
   zencoder
+
+RUBY VERSION
+   ruby 1.9.3p551
+
+BUNDLED WITH
+   1.17.3

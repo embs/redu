@@ -14,6 +14,6 @@ Untied::Publisher.configure do |config|
 end
 
 # Verifica e reabre conexões com o MySQL caso elas tenham sido perdidas.
-Delayed::Worker.lifecycle.before(:invoke_job) do
-  ActiveRecord::Base.verify_active_connections!
-end
+# Delayed::Worker.lifecycle.before(:invoke_job) do
+#   ActiveRecord::Base.verify_active_connections!
+# end

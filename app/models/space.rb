@@ -64,7 +64,7 @@ class Space < ActiveRecord::Base
                  :course_id, :published
 
   # PLUGINS
-  acts_as_taggable
+  # acts_as_taggable
   has_attached_file :avatar, Redu::Application.config.paperclip
 
   # VALIDATIONS

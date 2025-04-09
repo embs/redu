@@ -356,7 +356,7 @@ module AsyncJSHelper
     else
       javascript_path(package)
     end
-    package = package.to_a.flatten
+    package = package.is_a?(String) ? [package] :  package.to_a.flatten
 
     javascript_tag(:type => 'text/javascript') do
       result = ""

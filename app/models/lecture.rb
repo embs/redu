@@ -34,8 +34,8 @@ class Lecture < ActiveRecord::Base
   attr_protected :owner, :view_count, :is_clone
 
   # PLUGINS
-  acts_as_taggable
-  ajaxful_rateable :stars => 5
+  # acts_as_taggable
+  # ajaxful_rateable :stars => 5
   simple_acts_as_list :scope => :subject_id
 
   # VALIDATIONS

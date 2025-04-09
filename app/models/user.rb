@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class User < ActiveRecord::Base
-  include Invitable::Base
+  # include Invitable::Base
   include Humanizer
   include UserSearchable
   include EnrollmentService::BaseModelAdditions
@@ -150,9 +150,9 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, Redu::Application.config.paperclip_user
 
   has_friends
-  ajaxful_rater
-  acts_as_taggable
-  has_private_messages
+  # ajaxful_rater
+  # acts_as_taggable
+  # has_private_messages
 
   # VALIDATIONS
   validates_presence_of :first_name, :last_name
