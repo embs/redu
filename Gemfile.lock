@@ -1,3 +1,62 @@
+GIT
+  remote: https://github.com/edgarjs/ajaxful-rating.git
+  revision: f22e2c38d601f8279e959fbe9a578b2314235505
+  branch: rails3
+  specs:
+    ajaxful_rating (3.0.0.beta8)
+
+GIT
+  remote: https://github.com/guiocavalcanti/scribd_fu.git
+  revision: 422926986f993bf4d72fcaa981dea221ecc86641
+  branch: without-scape
+  specs:
+    scribd_fu (2.0.11)
+      rscribd
+
+GIT
+  remote: https://github.com/jongilbraith/simple-private-messages.git
+  revision: 7ba7d3c9f7670ef3bddfc90390a49556a94f7013
+  specs:
+    simple-private-messages (0.0.0)
+
+GIT
+  remote: https://github.com/patmaddox/no-peeping-toms.git
+  revision: 07d71a1064c9ee2ee9d7e6f14ecbd596f6a53911
+  specs:
+    no_peeping_toms (2.1.3)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
+GIT
+  remote: https://github.com/redu/analytics.git
+  revision: a777409d456f6e14894eac8e011f7046a14a1ae1
+  specs:
+    redu_analytics (0.0.3)
+      lazy_high_charts
+
+GIT
+  remote: https://github.com/redu/invitable.git
+  revision: 8f56a767909ab59220964304fb78364f49a42315
+  specs:
+    invitable (0.0.7)
+      rails (>= 3.0.10)
+
+GIT
+  remote: https://github.com/redu/vis_client.git
+  revision: 4e73d1de4004d60f63d891c8232e799664b2d5a4
+  branch: ruby-1-9-3
+  specs:
+    vis_client (0.0.7)
+      activerecord (~> 3)
+      bson_ext (~> 1.5)
+      configurable
+      delayed_job_mongoid
+      faraday
+      json
+      mongoid (~> 2.7)
+      roar
+      valium
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -31,6 +90,8 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
+    acts-as-taggable-on (2.4.1)
+      rails (>= 3, < 5)
     acts_as_tree (0.1.1)
     addressable (2.3.4)
     amq-client (1.0.2)
@@ -144,6 +205,7 @@ GEM
       ruby-hmac
     formatador (0.2.4)
     fssm (0.2.10)
+    hash-deep-merge (0.1.1)
     hashie (2.0.4)
     hike (1.2.2)
     hooks (0.3.1)
@@ -165,6 +227,11 @@ GEM
     json (1.8.0)
     jwt (0.1.6)
       multi_json (>= 1.0)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    lazy_high_charts (1.6.1)
+      hash-deep-merge
     lazydoc (1.0)
     libv8 (3.11.8.17)
     mail (2.5.4)
@@ -272,6 +339,8 @@ GEM
       roar (~> 0.11.13)
       test_xml (>= 0.1.6)
     route_translator (3.1.0)
+    rscribd (1.3.0)
+      mime-types
     rsolr (1.0.9)
       builder (>= 2.1.2)
     rspec (2.13.0)
@@ -306,6 +375,8 @@ GEM
       activesupport (>= 3.0.0)
       bourne (~> 1.3)
     signature (0.1.7)
+    simple-navigation (3.10.1)
+      activesupport (>= 2.3.2)
     simple_acts_as_list (0.0.1)
       activesupport
     sprockets (2.2.2)
@@ -364,7 +435,9 @@ PLATFORMS
 DEPENDENCIES
   aasm
   activerecord-import
+  acts-as-taggable-on (= 2.4.1)
   acts_as_tree (~> 0.1.1)
+  ajaxful_rating!
   asset_sync
   authlogic
   awesome_nested_fields
@@ -381,7 +454,6 @@ DEPENDENCIES
   dalli
   date_validator
   deep_cloneable
-  delayed_job_mongoid
   destroy_soon
   dynamic_form
   em-http-request
@@ -390,11 +462,14 @@ DEPENDENCIES
   ey_config
   factory_girl_rails
   humanizer
+  invitable!
   jasmine
   jquery-rails (>= 1.0.12)
+  kaminari (= 0.14.1)
   mime-types
   mysql2
   newrelic_rpm
+  no_peeping_toms!
   oauth-plugin (~> 0.4.0)
   omniauth
   omniauth-facebook
@@ -408,6 +483,7 @@ DEPENDENCIES
   rails_autolink
   rake (~> 10.0.4)
   redu-has_friends (~> 1.0)
+  redu_analytics!
   remotipart (~> 1.0)
   roar-rails
   route_translator
@@ -415,7 +491,10 @@ DEPENDENCIES
   ruby-prof
   rubyzip
   sass-rails (~> 3.2)
+  scribd_fu!
   shoulda-matchers (~> 1)
+  simple-navigation (= 3.10.1)
+  simple-private-messages (= 0.0.0)!
   simple_acts_as_list
   sunspot_rails
   sunspot_solr
@@ -426,6 +505,7 @@ DEPENDENCIES
   untied-publisher (~> 0.0.7.pre3)
   useragent
   valium
+  vis_client!
   webmock
   yajl-ruby
   zencoder
