@@ -4,13 +4,13 @@ class SolrProfileIndexerObserver < ActiveRecord::Observer
 
   observe :user, :experience, :education
 
-  def after_save(object)
-    user_for(object).index!
-  end
+  # def after_save(object)
+  #   user_for(object).index!
+  # end
 
-  def after_destroy(object)
-    user_for(object).index!
-  end
+  # def after_destroy(object)
+  #   user_for(object).index!
+  # end
 
   private
 

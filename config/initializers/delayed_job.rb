@@ -4,3 +4,11 @@
 # Delayed::Worker.max_run_time = 60.minutes
 # Delayed::Worker.default_priority = 10
 # Delayed::Worker.delay_jobs = true
+
+module Delayed
+  class Job
+    def self.enqueue(*args)
+      # noop
+    end
+  end
+end

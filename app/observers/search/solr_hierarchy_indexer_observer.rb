@@ -4,11 +4,11 @@ class SolrHierarchyIndexerObserver < ActiveRecord::Observer
 
   observe :environment, :course, :space
 
-  def after_save(object)
-    object.index!
-  end
+  # def after_save(object)
+  #   object.index!
+  # end
 
-  def after_destroy(object)
-    object.index!
-  end
+  # def after_destroy(object)
+  #   object.index!
+  # end
 end

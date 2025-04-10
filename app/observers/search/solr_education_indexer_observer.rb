@@ -6,9 +6,9 @@ class SolrEducationIndexerObserver < ActiveRecord::Observer
   observe :high_school, :higher_education,
     :complementary_course, :event_education
 
-  def after_update(object)
-    user_for(object).index!
-  end
+  # def after_update(object)
+  #   user_for(object).index!
+  # end
 
   private
 
