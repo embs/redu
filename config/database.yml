@@ -22,9 +22,9 @@ staging:
   password:
   database: redu_staging
   host: localhost
-#test:
-#  adapter: mysql2
-#  username: root
-#  password:
-#  database: redu_test
-#  host: localhost
+test:
+  adapter: mysql2
+  username: root
+  password: password
+  database: redu_test
+  host: redu_mysql
