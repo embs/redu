@@ -1,0 +1,53 @@
+name: Run RSpec Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+
+    services:
+      docker:
+        image: docker:24.0.5
+        options: --privileged
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Compose
+        run: |
+          docker compose version || docker compose version
+
+      - name: Build and start services
+        run: |
+          docker compose up -d --build
+
+      - name: Wait for MySQL to be ready
+        run: |
+          docker compose exec -T mysql bash -c '
+            until mysqladmin ping -h"localhost" --silent; do
+              echo "Waiting for MySQL...";
+              sleep 2;
+            done
+          '
+
+      - name: Add swap space
+        run: |
+          sudo fallocate -l 4G /swapfile
+          sudo chmod 600 /swapfile
+          sudo mkswap /swapfile
+          sudo swapon /swapfile
+          free -m
+
+      - name: Run RSpec
+        run: |
+          ./run-tests.sh
+
+      - name: Stop containers
+        if: always()
+        run: docker compose down -v
