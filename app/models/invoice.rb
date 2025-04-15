@@ -6,11 +6,11 @@ class Invoice < ActiveRecord::Base
 
   validates_presence_of :period_start, :period_end
 
-  scope :pending, where(:state => "pending")
-  scope :overdue, where(:state => "overdue")
-  scope :to_calculate, where(:state => "open")
-  scope :pending_payment, where("state LIKE ? OR state LIKE ?", 'pending',
-                                'overdue')
+  scope :pending, -> { where(:state => "pending") }
+  scope :overdue, -> { where(:state => "overdue") }
+  scope :to_calculate, -> { where(:state => "open") }
+  scope :pending_payment, -> { where("state LIKE ? OR state LIKE ?", 'pending',
+                                'overdue') }
   # Retorna todos os invoices com period_end contido (intervalo fechado)
   # no período informado.
   # Invoice.of_period(Range)

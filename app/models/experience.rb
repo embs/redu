@@ -16,7 +16,7 @@ class Experience < ActiveRecord::Base
     :if => Proc.new { |exp| exp.current == false }
   validate :end_date_absense, :if => Proc.new { |exp| exp.current == true }
 
-  scope :actual_jobs, where(:end_date => nil)
+  scope :actual_jobs, -> { where(:end_date => nil) }
 
   def self.current_jobs(experiences)
     experiences.select { |e| e.end_date == nil }

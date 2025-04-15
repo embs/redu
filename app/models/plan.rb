@@ -8,10 +8,8 @@ class Plan < ActiveRecord::Base
   belongs_to :user
   has_many :invoices
 
-  scope :blocked, where(:state => "blocked")
-  # Necessário, pois em produção o scope gerado automaticamente estava
-  # fazendo cache de consultas anteriores
-  scope :current, where(:current => true)
+  scope :blocked, -> { where(:state => "blocked") }
+  scope :current, -> { where(:current => true) }
 
   validates_presence_of :price, :user
 

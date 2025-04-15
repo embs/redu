@@ -21,12 +21,12 @@ class Lecture < ActiveRecord::Base
   accepts_nested_attributes_for :lectureable
 
   # SCOPES
-  scope :seminars, where("lectureable_type LIKE 'Seminar'")
-  scope :iclasses, where("lectureable_type LIKE 'InteractiveClass'")
-  scope :pages, where("lectureable_type LIKE 'Page'")
-  scope :documents, where("lectureable_type LIKE 'Document'")
-  scope :exercises, where("lectureable_type LIKE 'Exercise'")
-  scope :exercises_editables, where("lectureable_type LIKE 'Exercise' and lectureable_id NOT IN (SELECT exercise_id FROM results)")
+  scope :seminars, -> { where("lectureable_type LIKE 'Seminar'") }
+  scope :iclasses, -> { where("lectureable_type LIKE 'InteractiveClass'") }
+  scope :pages, -> { where("lectureable_type LIKE 'Page'") }
+  scope :documents, -> { where("lectureable_type LIKE 'Document'") }
+  scope :exercises, -> { where("lectureable_type LIKE 'Exercise'") }
+  scope :exercises_editables, -> { where("lectureable_type LIKE 'Exercise' and lectureable_id NOT IN (SELECT exercise_id FROM results)") }
   scope :recent, lambda { where('created_at > ?', 1.week.ago) }
   scope :by_subjects, lambda { |subjects_id| where(:subject_id =>subjects_id) }
   scope :by_day, lambda { |day| where(:created_at =>(day..(day+1))) }
