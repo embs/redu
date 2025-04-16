@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class User < ActiveRecord::Base
-  # include Invitable::Base
+  include Invitable::Base
   include Humanizer
   # include UserSearchable
   include EnrollmentService::BaseModelAdditions
