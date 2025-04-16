@@ -54,7 +54,7 @@ describe Result do
       end
 
       it "should assign the exam choices" do
-        Exercise.any_instance.should_receive(:choices_for).with(subject.user).
+        expect_any_instance_of(Exercise).to receive(:choices_for).with(subject.user).
           and_return([])
         subject.start!
         subject.finalize!

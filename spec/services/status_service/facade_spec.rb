@@ -99,9 +99,11 @@ module StatusService
         answer = mock_model('Answer')
         entity_service.stub(:create).and_return(answer)
 
+        notification_service_instance = mock(AnswerService::AnswerNotificationService)
+
         notification_service.should_receive(:new).
-          with(answer).and_call_original
-        notification_service.any_instance.should_receive(:deliver)
+          with(answer).and_return(notification_service_instance)
+        notification_service_instance.should_receive(:deliver)
 
         subject.answer_status(activity, attributes) do |a|
           a.user = FactoryGirl.build_stubbed(:user)

@@ -38,6 +38,13 @@ class CompoundLog < Status
     self.compound_visible_at <= interval.hours.ago if self.compound_visible_at
   end
 
+  # False significa que logs não estão compostos, logo devem ser exibidos
+  def update_compounded_logs_compound_property(compound = false)
+    self.logs.each do |log|
+      log.update_attributes(:compound => compound)
+    end
+  end
+
   protected
 
   # Retorna o último compound_log (em que devem ser agrupados novos logs).
@@ -57,12 +64,5 @@ class CompoundLog < Status
                        :compound => true,
                        :logeable_type => log.logeable.class.to_s,
                        :user => log.user)
-  end
-
-  # False significa que logs não estão compostos, logo devem ser exibidos
-  def update_compounded_logs_compound_property(compound = false)
-    self.logs.each do |log|
-      log.update_attributes(:compound => compound)
-    end
   end
 end

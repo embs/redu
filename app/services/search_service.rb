@@ -5,6 +5,8 @@ class SearchService
   # e com a chamada da busca pelos métodos individuais.
   # Desacopla ao máximo a lógica do controller trazendo para esta classe
 
+  attr_reader :params, :user, :ability, :filters, :results
+
   def initialize(opts={})
     @params = opts[:params].clone
     @ability = opts[:ability]
@@ -80,8 +82,6 @@ class SearchService
   end
 
   protected
-
-  attr_reader :params, :user, :ability, :filters, :results
 
   def search_results
     results.values

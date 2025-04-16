@@ -305,7 +305,7 @@ describe User do
 
       context "if !password_required?" do
         before do
-          User.any_instance.stub(:password_required?) { false }
+          allow_any_instance_of(User).to receive(:password_required?) { false }
         end
 
         context "length" do
@@ -326,7 +326,7 @@ describe User do
 
     context "humanizer" do
       it "should not be valid when enabling humanizer (User#enable_humanizer)" do
-        User.any_instance.stub(:enable_humanizer).and_return(true)
+        allow_any_instance_of(User).to receive(:enable_humanizer).and_return(true)
         FactoryGirl.build(:user).should_not be_valid
       end
     end

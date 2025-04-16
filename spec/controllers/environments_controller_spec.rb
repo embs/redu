@@ -302,7 +302,7 @@ describe EnvironmentsController do
       end
 
       it "calls remove_users" do
-        Environment.any_instance.should_receive(:remove_users).
+        expect_any_instance_of(Environment).to receive(:remove_users).
           with(@users[0..1])
         post_destroy_members(@environment, @users[0..1])
       end

@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 # source 'http://gems.github.com'
 # source 'http://reduadmin:pomp64bozos@the-shire.herokuapp.com/'
 
-ruby "1.9.3"
+ruby '2.1.10'
 
 gem 'aasm'
 gem 'premailer-rails'

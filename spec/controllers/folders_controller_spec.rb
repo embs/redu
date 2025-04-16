@@ -11,7 +11,7 @@ describe FoldersController do
   end
 
   before do
-    Folder.any_instance.stub(:can_upload_file?).and_return(true)
+    allow_any_instance_of(Folder).to receive(:can_upload_file?).and_return(true)
     login_as user
   end
 
@@ -33,7 +33,7 @@ describe FoldersController do
     end
 
     it "should call FolderService.create" do
-      FolderService.any_instance.should_receive(:create).and_call_original
+      expect_any_instance_of(FolderService).to receive(:create).and_call_original
       post :create, params
     end
 
@@ -52,7 +52,7 @@ describe FoldersController do
     let(:params) { base_params.merge(:id => folder.to_param) }
 
     it "should call FolderService.destroy" do
-      FolderService.any_instance.should_receive(:destroy).and_call_original
+      expect_any_instance_of(FolderService).to receive(:destroy).and_call_original
       delete :destroy_folder, params
     end
   end
@@ -70,7 +70,7 @@ describe FoldersController do
     it "should call FolderService.update" do
       update_params = params["folder"].
         merge("date_modified" => an_instance_of(Time))
-      FolderService.any_instance.should_receive(:update).with(update_params).
+      expect_any_instance_of(FolderService).to receive(:update).with(update_params).
         and_call_original
       post :update, params
     end
@@ -91,11 +91,10 @@ describe FoldersController do
 
       before do
         space.course.plan = FactoryGirl.build(:plan, :billable => nil)
-        Folder.any_instance.stub(:can_upload_file?) { true }
       end
 
       it "should call MyfileService.create" do
-        MyfileService.any_instance.should_receive(:create).and_call_original
+        expect_any_instance_of(MyfileService).to receive(:create).and_call_original
         post :do_the_upload, params
       end
 
@@ -118,7 +117,7 @@ describe FoldersController do
       end
 
       it "should call MyfileService.destroy" do
-        MyfileService.any_instance.should_receive(:destroy).and_call_original
+        expect_any_instance_of(MyfileService).to receive(:destroy).and_call_original
         delete :destroy_file, params
       end
 

@@ -146,7 +146,7 @@ describe OauthClientsController do
 
     context "with valid params" do
       it "updates the requested client application" do
-        ClientApplication.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
+        expect_any_instance_of(ClientApplication).to receive(:update_attributes).with({'these' => 'params'})
         put :update, {:id => client_application.to_param,
                       :client_application => {'these' => 'params'} }.
                       merge!(params)

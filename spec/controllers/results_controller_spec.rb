@@ -27,7 +27,7 @@ describe ResultsController do
     end
 
     it "creates the Result when does not exists" do
-      Exercise.any_instance.should_receive(:start_for).with(@user)
+      expect_any_instance_of(Exercise).to receive(:start_for).with(@user)
       post :create, @params
     end
 
@@ -53,7 +53,7 @@ describe ResultsController do
     end
 
     it "should call finalize for" do
-      Exercise.any_instance.should_receive(:finalize_for).with(@user)
+      expect_any_instance_of(Exercise).to receive(:finalize_for).with(@user)
       post :update, @params
     end
 
