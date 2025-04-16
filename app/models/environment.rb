@@ -40,7 +40,7 @@ class Environment < ActiveRecord::Base
 
   attr_protected :owner, :published
 
-  # acts_as_taggable
+  acts_as_taggable
   has_attached_file :avatar, Redu::Application.config.paperclip_environment
 
   validates_presence_of :name, :path, :initials

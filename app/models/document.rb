@@ -4,7 +4,7 @@ class Document < ActiveRecord::Base
     Redu::Application.config.mimetypes['image']
 
   has_attached_file :attachment, Redu::Application.config.paperclip_documents
-  # has_ipaper_and_uses 'Paperclip'
+  has_ipaper_and_uses 'Paperclip'
   validates_attachment_content_type :attachment, :content_type => CONTENT_TYPES
   validates_attachment_presence :attachment
 

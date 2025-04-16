@@ -97,7 +97,7 @@ class Course < ActiveRecord::Base
 
   attr_protected :owner, :published, :environment
 
-  # acts_as_taggable
+  acts_as_taggable
 
   validates_presence_of :name, :path
   validates_uniqueness_of :name, :path, :scope => :environment_id
