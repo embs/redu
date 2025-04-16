@@ -454,6 +454,7 @@ DEPENDENCIES
   dalli
   date_validator
   deep_cloneable
+  delayed_job_mongoid
   destroy_soon
   dynamic_form
   em-http-request

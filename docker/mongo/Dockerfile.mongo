@@ -1,0 +1,35 @@
+FROM debian:jessie
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Fix expired repo signatures & update sources
+RUN sed -i '/jessie-updates/d' /etc/apt/sources.list && \
+    sed -i 's|http://deb.debian.org|http://archive.debian.org|g' /etc/apt/sources.list && \
+    sed -i 's|http://security.debian.org|http://archive.debian.org|g' /etc/apt/sources.list && \
+    echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    ca-certificates \
+    libcurl3 \
+    libboost-filesystem1.55.0 \
+    libboost-program-options1.55.0 \
+    libboost-system1.55.0 \
+    libboost-thread1.55.0 \
+    libpcap0.8 \
+    libsnappy1 \
+    libyaml-cpp0.5 \
+    --allow-unauthenticated
+
+# Download and install MongoDB 2.2.7 manually
+RUN curl -O http://downloads.mongodb.org/linux/mongodb-linux-x86_64-2.2.7.tgz && \
+    tar -zxvf mongodb-linux-x86_64-2.2.7.tgz && \
+    mv mongodb-linux-x86_64-2.2.7 /opt/mongodb && \
+    ln -s /opt/mongodb/bin/* /usr/local/bin/ && \
+    mkdir -p /data/db
+
+EXPOSE 27017
+
+CMD ["mongod"]
+

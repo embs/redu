@@ -55,7 +55,7 @@ class Space < ActiveRecord::Base
   has_many :canvas, as: :container, class_name: 'Api::Canvas'
 
   scope :of_course, lambda { |course_id| where(course_id: course_id) }
-  scope :published, where(published: true)
+  scope :published, -> { where(published: true) }
   scope :teachers, joins(:user_space_associations).
     where("user_space_associations.role = ?", :teacher)
 

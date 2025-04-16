@@ -4,9 +4,10 @@ services:
       context: .  # assumes Dockerfile is in current directory
     container_name: redu
     ports:
-      - "3000:3000"  # host:container
+      - "3000:3000"
     depends_on:
       - mysql
+      - mongo
     environment:
       RAILS_ENV: development
       RAKE_ENV: development
@@ -15,7 +16,7 @@ services:
       DATABASE_USER: root
       DATABASE_PASSWORD: password
     volumes:
-      - .:/app  # optional, for local dev changes to reflect
+      - .:/app
     stdin_open: true
     tty: true
 
@@ -31,6 +32,17 @@ services:
       - mysql_data:/var/lib/mysql
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
 
+  mongo:
+    build:
+      context: ./docker/mongo
+      dockerfile: Dockerfile.mongo
+    container_name: redu_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
 volumes:
   mysql_data:
+  mongo_data:
 

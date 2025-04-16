@@ -1,12 +1,17 @@
 development:
+  host: mongo
+  port: 27017
   database: redu_development
-  databases:
-    vis:
-      database: vis_development
+    #databases:
+    #  vis:
+    #    database: vis_development
 test:
+  host: mongo
+  port: 27017
   database: redu_test
 production:
+  host: mongo
   database: redu_production
-  databases:
-    vis:
-      database: vis_production
+    #databases:
+    #  vis:
+    #    database: vis_production

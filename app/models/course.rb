@@ -61,7 +61,7 @@ class Course < ActiveRecord::Base
   has_many :statuses, :as => :statusable, :order => "updated_at DESC",
     :dependent => :destroy
 
-  scope :published, where(:published => 1)
+  scope :published, -> { where(:published => 1) }
   scope :of_environment, lambda { |environmnent_id|
     where(:environment_id => environmnent_id)
   }

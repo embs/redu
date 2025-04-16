@@ -93,8 +93,8 @@ class User < ActiveRecord::Base
   has_many :choices, dependent: :delete_all
 
   # Named scopes
-  scope :recent, order('users.created_at DESC')
-  scope :active, where("users.activated_at IS NOT NULL")
+  scope :recent, -> { order('users.created_at DESC') }
+  scope :active, -> { where("users.activated_at IS NOT NULL") }
   scope :with_ids, lambda { |ids| where(id: ids) }
   scope :without_ids, lambda {|ids|
     where("users.id NOT IN (?)", ids)
