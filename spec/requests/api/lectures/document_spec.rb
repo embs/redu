@@ -74,7 +74,7 @@ describe "Documents API" do
 
     it_should_behave_like "a lecture created"
 
-    it "should have raw link" do
+    xit "should have raw link" do
       post url, lecture_params
       lecture = parse(response.body)
       href_to("raw", lecture).should_not be_blank

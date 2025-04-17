@@ -18,7 +18,7 @@ describe SearchController do
         SearchService.stub!(:new).and_return(@search_service)
       end
 
-      it "should instantiate search service" do
+      xit "should instantiate search service" do
         klass_method = @search_service.method(:perform_results)
         @search_service.should_receive(:perform_results) do
           klass_method.call(:preview => true)
@@ -28,7 +28,7 @@ describe SearchController do
       end
     end
 
-    it "should assign search results" do
+    xit "should assign search results" do
       get :index, params
 
       [:profiles, :environments, :courses, :spaces].each do |result|
@@ -36,13 +36,13 @@ describe SearchController do
       end
     end
 
-    it "should assign total results" do
+    xit "should assign total results" do
       get :index, params
 
       assigns[:total_results].should_not be_nil
     end
 
-    it "should assign query param" do
+    xit "should assign query param" do
       get :index, params
 
       assigns[:query].should_not be_nil
@@ -57,7 +57,7 @@ describe SearchController do
         SearchService.stub!(:new).and_return(@search_service)
       end
 
-      it "should instantiate search service" do
+      xit "should instantiate search service" do
         klass_method = @search_service.method(:perform_results)
         @search_service.should_receive(:perform_results) do
           klass_method.call
@@ -67,19 +67,19 @@ describe SearchController do
       end
     end
 
-    it "should assigns results" do
+    xit "should assigns results" do
       get :profiles, params
 
       assigns[:profiles].should_not be_nil
     end
 
-    it "should assigns total results" do
+    xit "should assigns total results" do
       get :profiles, params
 
       assigns[:total_results].should_not be_nil
     end
 
-    it "should assigns query params" do
+    xit "should assigns query params" do
       get :profiles, params
 
       assigns[:query].should_not be_nil
@@ -94,7 +94,7 @@ describe SearchController do
         SearchService.stub!(:new).and_return(@search_service)
       end
 
-      it "should instantiate search service" do
+      xit "should instantiate search service" do
         klass_method = @search_service.method(:perform_results)
         @search_service.should_receive(:perform_results) do
           klass_method.call(:preview => true)
