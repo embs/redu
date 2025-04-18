@@ -2,12 +2,12 @@ source 'http://rubygems.org'
 # source 'http://gems.github.com'
 # source 'http://reduadmin:pomp64bozos@the-shire.herokuapp.com/'
 
-ruby '2.1.10'
+ruby '2.6.10'
 
 gem 'aasm'
 gem 'premailer-rails'
 gem 'classy_enum'
-gem 'activerecord-import'
+gem 'activerecord-import' # needs ruby 2.4
 gem 'acts_as_tree', '~> 0.1.1'
 gem 'acts-as-taggable-on', '2.4.1'
 gem 'ajaxful_rating',
@@ -23,7 +23,7 @@ gem 'ckeditor', '3.4.2.pre'
 gem 'daemons', '1.0.10'
 gem 'date_validator'
 gem 'deep_cloneable'
-gem 'delayed_job_mongoid'
+# gem 'delayed_job_mongoid'
 gem 'bson_ext'
 gem 'dynamic_form'
 gem 'em-http-request'
@@ -32,7 +32,7 @@ gem 'exceptional'
 gem 'factory_girl_rails'
 gem "redu-has_friends", "~> 1.0", require: "has_friends"
 gem 'invitable', git: 'https://github.com/redu/invitable.git'
-gem 'jquery-rails', '>= 1.0.12'
+gem 'jquery-rails' #, '>= 1.0.12'
 gem 'kaminari', '0.14.1'
 gem 'mime-types'
 gem "mysql2"
@@ -41,7 +41,7 @@ gem 'omniauth-facebook'
 gem 'pusher'
 gem 'pagseguro', '~> 0.1.10'
 gem 'paperclip', '~> 2.7.5'
-gem 'rails', '~> 3.2.13'
+gem 'rails', '~> 4.0'
 gem "rake", "~> 10.0.4"
 gem 'remotipart', '~> 1.0'
 gem 'scribd_fu', git: 'https://github.com/guiocavalcanti/scribd_fu.git',
@@ -50,12 +50,12 @@ gem 'simple-navigation', '3.10.1'
 # gem 'sunspot_rails'
 gem 'route_translator'
 gem 'useragent'
-gem 'vis_client', git: 'https://github.com/redu/vis_client.git',
-  branch: 'ruby-1-9-3'
+# gem 'vis_client', git: 'https://github.com/redu/vis_client.git', # needs rails 3
+#   branch: 'ruby-1-9-3'
 gem 'chronic' # Necessário ao whenever
 # gem 'whenever', require: false
 gem 'zencoder'
-gem 'untied-publisher', '~> 0.0.7.pre3'
+# gem 'untied-publisher', '~> 0.0.7.pre3'
 gem 'yajl-ruby'
 gem 'simple_acts_as_list'
 gem 'ey_config'
@@ -76,19 +76,19 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'roar-rails'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2'
+  gem 'sass-rails' #,   '~> 4.0' # sass-embedded
   gem 'compass-rails'
   gem 'therubyracer', platforms: :ruby
   gem 'uglifier', '~> 2'
   gem 'asset_sync'
-  gem 'turbo-sprockets-rails3'
+  # gem 'turbo-sprockets-rails3'
 end
 
 # Gems específicos de algum ambiente
 group :development, :test do
   gem 'jasmine'
   gem 'no_peeping_toms', git: 'https://github.com/patmaddox/no-peeping-toms.git'
-  gem 'rails3-generators'
+  # gem 'rails3-generators'
   gem "rspec-rails", "~> 2.13"
   # gem 'debugger'
   # gem 'sunspot_solr'
