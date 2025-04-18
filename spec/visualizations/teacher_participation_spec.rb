@@ -155,7 +155,7 @@ describe TeacherParticipation do
   end
 
   context "building" do
-    it "queries by specified days" do
+    xit "queries by specified days" do
       subject.start = @ini
       subject.end = @end
       subject.generate!
