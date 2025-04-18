@@ -57,7 +57,7 @@ describe "AssetReports API" do
     end
 
     it "should call update_grade! on enrollment" do
-      Enrollment.any_instance.should_receive(:update_grade!).once
+      expect_any_instance_of(Enrollment).to receive(:update_grade!).once
       put "/api/progress/#{asset_report.id}", put_params
     end
   end
