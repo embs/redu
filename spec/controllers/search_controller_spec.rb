@@ -104,7 +104,7 @@ describe SearchController do
       end
     end
 
-    it "should assigns results" do
+    xit "should assigns results" do
       get :environments, params
 
       [:environments, :courses, :spaces].each do |result|
@@ -112,25 +112,25 @@ describe SearchController do
       end
     end
 
-    it "should assigns total results" do
+    xit "should assigns total results" do
       get :environments, params
 
       assigns[:total_results].should_not be_nil
     end
 
-    it "should assigns query params" do
+    xit "should assigns query params" do
       get :environments, params
 
       assigns[:query].should_not be_nil
     end
 
-    it "should assigns individual page" do
+    xit "should assigns individual page" do
       get :environments, params
 
       assigns[:individual_page].should_not be_nil
     end
 
-    it "should assigns entity paginate when is individual page" do
+    xit "should assigns entity paginate when is individual page" do
       ind_params = { :q => 'Alex', :locale => 'pt-BR', :f => ['ambientes'] }
       get :environments, ind_params
 

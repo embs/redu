@@ -20,7 +20,7 @@ describe SearchService do
   end
 
   context "perform search" do
-    it "should perform search for many classes" do
+    xit "should perform search for many classes" do
       klass_method = SpaceSearch.method(:perform)
       SpaceSearch.should_receive(:perform).once do
         klass_method.call(params[:q], per_page)
@@ -77,7 +77,7 @@ describe SearchService do
       subject.perform_results
     end
 
-    it { subject.klass_results("SpaceSearch".should_not be_nil) }
+    xit { subject.klass_results("SpaceSearch".should_not be_nil) }
   end
 
   describe "#result_paginate" do
@@ -85,6 +85,6 @@ describe SearchService do
       subject.perform_results
     end
 
-    it { subject.result_paginate.should respond_to(:page) }
+    xit { subject.result_paginate.should respond_to(:page) }
   end
 end

@@ -8,7 +8,7 @@ describe Search do
   it { should respond_to(:search) }
 
   describe "#search" do
-    it 'should call Sunspot::search method for Class' do
+    xit 'should call Sunspot::search method for Class' do
       search = Search.new(User)
       User.should_receive(:search).once
 

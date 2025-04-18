@@ -4,6 +4,7 @@ Rodando local:
     docker compose build redu
     docker compose run redu bash
     rake db:create db:migrate
+    rake bootstrap:all
     exit
     docker compose up -d redu
 

@@ -47,7 +47,7 @@ gem 'remotipart', '~> 1.0'
 gem 'scribd_fu', git: 'https://github.com/guiocavalcanti/scribd_fu.git',
   branch: 'without-scape'
 gem 'simple-navigation', '3.10.1'
-gem 'sunspot_rails'
+# gem 'sunspot_rails'
 gem 'route_translator'
 gem 'useragent'
 gem 'vis_client', git: 'https://github.com/redu/vis_client.git',
@@ -91,7 +91,7 @@ group :development, :test do
   gem 'rails3-generators'
   gem "rspec-rails", "~> 2.13"
   # gem 'debugger'
-  gem 'sunspot_solr'
+  # gem 'sunspot_solr'
 end
 
 group :test do

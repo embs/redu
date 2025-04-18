@@ -20,4 +20,4 @@
 # end
 
 # Stubs search for all specs
-Sunspot.session = Sunspot::Rails::StubSessionProxy.new(Sunspot.session)
+# Sunspot.session = Sunspot::Rails::StubSessionProxy.new(Sunspot.session)
