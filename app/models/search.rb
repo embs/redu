@@ -15,12 +15,12 @@ class Search
   def search(opts)
     opts[:include] ||= []
 
-    klass.send("search", { :include => opts[:include] }) do
-      fulltext opts[:query] do
-        fields opts[:fields] if opts[:fields]
-      end
-      order_by :score, opts[:order]
-      paginate :page => opts[:page], :per_page => opts[:per_page]
-    end
+    # klass.send("search", { :include => opts[:include] }) do
+    #   fulltext opts[:query] do
+    #     fields opts[:fields] if opts[:fields]
+    #   end
+    #   order_by :score, opts[:order]
+    #   paginate :page => opts[:page], :per_page => opts[:per_page]
+    # end
   end
 end
