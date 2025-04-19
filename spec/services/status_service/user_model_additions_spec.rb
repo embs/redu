@@ -4,7 +4,7 @@ require 'spec_helper'
 module StatusService
   describe User do
     subject { FactoryGirl.create(:user) }
-    let(:facade) { mock("Facade") }
+    let(:facade) { double("Facade") }
 
     describe "before_destroy" do
       it "should invoke User#destroy_statuses" do
@@ -22,7 +22,7 @@ module StatusService
     end
 
     def mock_facade(m)
-      Facade.stub(:instance).and_return(m)
+      allow(Facade).to receive(:instance).and_return(m)
     end
   end
 end

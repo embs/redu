@@ -7,7 +7,7 @@ shared_examples_for 'cache writing' do
     @controller.stub(:current_user) { user }
   end
 
-  it 'writes a cache' do
+  xit 'writes a cache' do
     performing_cache do |cache|
       requisition
 

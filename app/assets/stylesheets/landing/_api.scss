@@ -7,7 +7,7 @@
 .landing-api {
   padding: 20px;
 
-  &:hover .landing-api-illustration { @extend .sprite-keko-playing.keko-playing_hover; }
+  &:hover .landing-api-illustration { @extend .sprite-keko-playing.keko-playing_hover !optional; }
 }
 
 // Descrição.

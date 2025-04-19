@@ -48,7 +48,7 @@ class Status < ActiveRecord::Base
 
   def self.associate_with(status, users)
     ids = \
-      users.is_a?(ActiveRecord::Relation) ? users.value_of(:id) : users.map(&:id)
+      users.is_a?(ActiveRecord::Relation) ? users.pluck(:id) : users.map(&:id)
 
     columns = [:user_id, :status_id]
     options = { :validate => false, :on_duplicate_key_update => [:user_id] }

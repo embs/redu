@@ -127,7 +127,9 @@ describe PlansController do
         @course.plan.should == assigns[:new_plan]
       end
 
-      it { should set_the_flash.to("O novo plano foi assinado, você pode ver a fatura abaixo.")}
+      it 'sets the flash' do
+        expect(flash[:notice]).to eq("O novo plano foi assinado, você pode ver a fatura abaixo.")
+      end
 
       it "should redirect to new plan invoices index" do
         response.should redirect_to(controller.plan_invoices_path(assigns[:new_plan]))
@@ -172,7 +174,9 @@ describe PlansController do
         @environment.plan.should == assigns[:new_plan]
       end
 
-      it { should set_the_flash.to("O novo plano foi assinado, você pode ver a fatura abaixo.")}
+      it 'sets the flash' do
+        expect(flash[:notice]).to eq("O novo plano foi assinado, você pode ver a fatura abaixo.")
+      end
 
       it "should redirect to new plan invoices index" do
         response.should redirect_to(controller.plan_invoices_path(assigns[:new_plan]))

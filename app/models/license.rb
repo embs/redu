@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 class License < ActiveRecord::Base
+  include ClassyEnum::ActiveRecord
+
   belongs_to :invoice
   belongs_to :course
 

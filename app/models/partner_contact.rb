@@ -7,7 +7,7 @@ class PartnerContact
     :migration, :billable_url
 
   validates_presence_of  :email, :category
-  validates_format_of :email, :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i
+  validates_format_of :email, :with => /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}\z/i
 
   validates_presence_of :environment_name, :course_name, :unless => "self.migration"
   validates_presence_of :billable_url, :if => "self.migration"

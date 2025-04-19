@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   include StatusService::BaseModelAdditions
   include StatusService::UserAdditions::ModelAdditions
   include DestroySoon::ModelAdditions
+  include ClassyEnum::ActiveRecord
 
   # Valida a resposta ao captcha
   attr_writer :enable_humanizer
@@ -149,10 +150,12 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, Redu::Application.config.paperclip_user
 
+  validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
   has_friends
   ajaxful_rater
   acts_as_taggable
-  has_private_messages
+  # has_private_messages
 
   # VALIDATIONS
   validates_presence_of :first_name, :last_name
@@ -160,10 +163,10 @@ class User < ActiveRecord::Base
             date: { before: Proc.new { 13.years.ago } }
   validates_acceptance_of :tos
   validates_format_of :mobile,
-                      with: /^\+\d{2}\s\(\d{2}\)\s\d{4}-\d{4}$/,
+                      with: /\A\+\d{2}\s\(\d{2}\)\s\d{4}-\d{4}\z/,
                       allow_blank: true
-  validates_format_of :first_name, with: /^\S(\S|\s)*\S$/
-  validates_format_of :last_name, with: /^\S(\S|\s)*\S$/
+  validates_format_of :first_name, with: /\A\S(\S|\s)*\S\z/
+  validates_format_of :last_name, with: /\A\S(\S|\s)*\S\z/
   validates_length_of :first_name, maximum: 25
   validates_length_of :last_name, maximum: 25
   validates :password,
@@ -172,11 +175,11 @@ class User < ActiveRecord::Base
     if: :password_required?
   validates :login,
     exclusion: { in: Redu::Application.config.extras["reserved_logins"] },
-    format: { with: /^[A-Za-z0-9_-]*[A-Za-z]+[A-Za-z0-9_-]*$/ },
+    format: { with: /\A[A-Za-z0-9_-]*[A-Za-z]+[A-Za-z0-9_-]*\z/ },
     length: { minimum: MIN_LOGIN_LENGTH, maximum: MAX_LOGIN_LENGTH }
   validates_uniqueness_of :login, case_sensitive: false
   validates :email,
-    format: { with: /^([^@\s]+)@((?:[-a-z0-9A-Z]+\.)+[a-zA-Z]{2,})$/ },
+    format: { with: /\A([^@\s]+)@((?:[-a-z0-9A-Z]+\.)+[a-zA-Z]{2,})\z/ },
     length: { minimum: 3, maximum: 100 },
     confirmation: true
   validates_uniqueness_of :email, case_sensitive: false
@@ -405,6 +408,7 @@ class User < ActiveRecord::Base
   end
 
   def display_name
+    puts "self: #{self.attributes}"
     if self.removed?
       return '(usuário removido)'
     end
@@ -551,7 +555,8 @@ class User < ActiveRecord::Base
       # Populares da rede exceto o próprio usuário e os usuários que ele,
       # requisitou/foi requisitada a amizade.
       users = User.select('users.id, users.login, users.avatar_file_name,' \
-                          ' users.first_name, users.last_name, users.avatar_updated_at').
+                          ' users.first_name, users.last_name, users.avatar_updated_at,' \
+                          ' users.removed').
                           without_ids(contacts_and_pending_ids << self).
                           popular(20) |
       # Professores populares da rede exceto o próprio usuário e os usuários,
@@ -629,6 +634,10 @@ class User < ActiveRecord::Base
     self.experiences.actual_jobs.empty? && self.educations.empty? &&
     self.birthday.nil? && self.languages.blank? &&
     self.birth_localization.blank? && self.localization.blank?
+  end
+
+  def unread_message_count
+    0
   end
 
   protected

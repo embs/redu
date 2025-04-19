@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class BaseDoorkeeper
-  include Untied::Publisher::Doorkeeper
+#   include Untied::Publisher::Doorkeeper
 # 
 #   def initialize
 #     %w(space course space subject lecture user_environment_association

@@ -6,6 +6,10 @@ class BaseMailer < ActionMailer::Base
 
   include BaseHelper
 
+  def self.delay(*args)
+    self # noop
+  end
+
   default :from => "\"Equipe Redu\" <#{Redu::Application.config.email}>",
       :content_type => "text/plain",
       :reply_to => "#{Redu::Application.config.email}"

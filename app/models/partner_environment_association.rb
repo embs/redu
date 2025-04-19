@@ -4,7 +4,7 @@ class PartnerEnvironmentAssociation < ActiveRecord::Base
   belongs_to :environment, :dependent => :destroy
 
   validates_presence_of :cnpj, :address, :company_name
-  validates_format_of :cnpj, :with => /^\d{2}.?\d{3}.?\d{3}\/?\d{4}\-?\d{2}$/
+  validates_format_of :cnpj, :with => /\A\d{2}.?\d{3}.?\d{3}\/?\d{4}\-?\d{2}\z/
 
   accepts_nested_attributes_for :environment, :limit => 1
 

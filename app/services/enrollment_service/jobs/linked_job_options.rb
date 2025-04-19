@@ -37,7 +37,7 @@ module EnrollmentService
 
       def pluck_ids_of(models)
         if models.is_a?(ActiveRecord::Relation)
-          models.value_of(:id)
+          models.pluck(:id)
         elsif models.respond_to?(:map)
           models.map(&:id)
         end

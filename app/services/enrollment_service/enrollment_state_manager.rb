@@ -56,7 +56,7 @@ module EnrollmentService
       columns = [:id, :graduated] if columns.empty?
 
       if enrollments.is_a? ActiveRecord::Relation
-        enrollments.values_of(*columns)
+        enrollments.pluck(*columns)
       else
         enrollments.map { |e| columns.map { |c| e.send(c) } }
       end

@@ -16,7 +16,7 @@ module StatusService
     private
 
     def destroy_dependency(klass)
-      dependency_arel(klass).delete_all
+      klass.where(id: dependency_arel(klass).pluck(:id)).delete_all
     end
 
     def dependency_arel(klass)

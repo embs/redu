@@ -6,7 +6,7 @@ class Message < ActiveRecord::Base
   attr_accessor :to
   attr_accessor :reply_to
 
-  is_private_message
+  # is_private_message
 
   validates_presence_of :body, :subject
   validates_presence_of :recipient

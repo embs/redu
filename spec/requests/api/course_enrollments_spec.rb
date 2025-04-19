@@ -146,7 +146,7 @@ describe Api::CourseEnrollmentsController do
       get "/api/users/#{user.id}/enrollments", params.merge(filter)
 
       expected = user.course_enrollments.
-        where(course_id: filter[:courses_ids]).value_of(:id)
+        where(course_id: filter[:courses_ids]).pluck(:id)
       parse(response.body).map { |c| c["id"] }.should == expected
     end
 
@@ -157,7 +157,7 @@ describe Api::CourseEnrollmentsController do
       get "/api/users/#{user.id}/enrollments", params.merge(filter)
 
       expected = user.course_enrollments.
-        where(course_id: filter[:courses_ids]).value_of(:id)
+        where(course_id: filter[:courses_ids]).pluck(:id)
       parse(response.body).map { |c| c["id"] }.should == expected
     end
   end

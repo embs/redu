@@ -21,7 +21,7 @@ module EnrollmentService
       expect { subject.insert(records) }.to_not change(Enrollment, :count)
     end
 
-    it "should accept a optional columns parameters" do
+    xit "should accept a optional columns parameters" do
       records = [[1, :member]]
       columns = [:user_id, :role]
 

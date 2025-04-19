@@ -14,12 +14,12 @@ module StatusService
     attr_accessor :course
 
     def spaces_ids
-      course.spaces.values_of(:id)
+      course.spaces.pluck(:id)
     end
 
     def lectures_ids
-      subjects_ids = Subject.where(space_id: spaces_ids).values_of(:id)
-      Lecture.by_subjects(subjects_ids).values_of(:id)
+      subjects_ids = Subject.where(space_id: spaces_ids).pluck(:id)
+      Lecture.by_subjects(subjects_ids).pluck(:id)
     end
   end
 end

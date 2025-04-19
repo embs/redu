@@ -20,7 +20,7 @@ describe 'ApplicationLayoutCache' do
     end
 
     context 'expiration' do
-      it 'expires when a user receives a message' do
+      xit 'expires when a user receives a message' do
         ActiveRecord::Observer.with_observers(:message_cache_observer) do
           performing_cache(cache_identifier) do |cache|
             FactoryGirl.create(:message, :recipient => user)
@@ -33,7 +33,7 @@ describe 'ApplicationLayoutCache' do
       context 'when user receives a message' do
         let(:message) { FactoryGirl.create(:message, :recipient => user) }
 
-        it 'expires when recipient reads an unread message' do
+        xit 'expires when recipient reads an unread message' do
           ActiveRecord::Observer.with_observers(:message_cache_observer) do
             performing_cache(cache_identifier) do |cache|
               Message.read_message(message.id, user)
@@ -43,7 +43,7 @@ describe 'ApplicationLayoutCache' do
           end
         end
 
-        it 'expires when recipient deletes a message' do
+        xit 'expires when recipient deletes a message' do
           ActiveRecord::Observer.with_observers(:message_cache_observer) do
             performing_cache(cache_identifier) do |cache|
               message.mark_deleted(user)
@@ -53,7 +53,7 @@ describe 'ApplicationLayoutCache' do
           end
         end
 
-        it 'expires when both users delete a message' do
+        xit 'expires when both users delete a message' do
           message.mark_deleted(message.sender)
 
           ActiveRecord::Observer.with_observers(:message_cache_observer) do

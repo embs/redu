@@ -36,7 +36,7 @@ module EnrollmentService
       assets = AssetReport.where(lecture_id: lectures,
                                  enrollment_id: enrollments)
 
-      AssetReport.delete_all(["id IN (?)", assets.values_of(:id)])
+      AssetReport.delete_all(["id IN (?)", assets.pluck(:id)])
     end
 
     def get_asset_reports_for(enrollments)
@@ -66,7 +66,7 @@ module EnrollmentService
         enrollments.map { |e| [e.id, e.subject_id] }
       else
         subject_ids = lectures.map(&:subject_id).uniq
-        Enrollment.where(subject_id: subject_ids).values_of(:id, :subject_id)
+        Enrollment.where(subject_id: subject_ids).pluck(:id, :subject_id)
       end
     end
   end

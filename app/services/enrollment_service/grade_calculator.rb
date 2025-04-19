@@ -24,7 +24,7 @@ module EnrollmentService
 
     # [[:enrollment_id, :done]]
     def enrollment_id_and_done_pairs
-      asset_reports.values_of(:enrollment_id, :done)
+      asset_reports.pluck(:enrollment_id, :done)
     end
 
     def asset_reports
@@ -33,7 +33,7 @@ module EnrollmentService
 
     def enrollment_ids
       if enrollments.is_a? ActiveRecord::Relation
-        enrollments.value_of(:id)
+        enrollments.pluck(:id)
       else
         enrollments.map(&:id)
       end
