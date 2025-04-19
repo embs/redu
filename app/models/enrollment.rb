@@ -1,7 +1,9 @@
 # -*- encoding : utf-8 -*-
 class Enrollment < ActiveRecord::Base
-  include EnrollmentService::BaseModelAdditions
+  # include EnrollmentService::BaseModelAdditions
   include EnrollmentService::EnrollmentAdditions::ModelAdditions
+
+  include ClassyEnum::ActiveRecord
 
   # Entidade intermediária entre User e Subject. É criada quando o usuário se
   # matricula num determinado Subject.
