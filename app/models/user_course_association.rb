@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 class UserCourseAssociation < CourseEnrollment
+  include ClassyEnum::ActiveRecord
+
   belongs_to :user
   classy_enum_attr :role, :default => 'member'
   has_many :logs, :as => :logeable, :order => "created_at DESC",

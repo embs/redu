@@ -1,26 +1,26 @@
 # -*- encoding : utf-8 -*-
 Redu::Application.routes.draw do
   localized do
-    match '/oauth/token',         :to => 'oauth#token',         :as => :token
-    match '/oauth/access_token',  :to => 'oauth#access_token',  :as => :access_token
-    match '/oauth/request_token', :to => 'oauth#request_token', :as => :request_token
-    match '/oauth/authorize',     :to => 'oauth#authorize',     :as => :authorize
-    match '/oauth',               :to => 'oauth#index',         :as => :oauth
-    match '/oauth/revoke', :to => 'oauth#revoke'
-    match '/oauth/revoke',        :to => 'oauth#revoke',        :as => :oauth_revoke
-    match '/oauth/invalidate',    :to => 'oauth#invalidate',    :as => :oauth_invalidate
-    match '/oauth/capabilities',  :to => 'oauth#capabilities',  :as => :oauth_capabilities
+    match '/oauth/token',         :to => 'oauth#token',         :as => :token, :via => [:get, :post]
+    match '/oauth/access_token',  :to => 'oauth#access_token',  :as => :access_token, :via => [:get, :post]
+    match '/oauth/request_token', :to => 'oauth#request_token', :as => :request_token, :via => [:get, :post]
+    match '/oauth/authorize',     :to => 'oauth#authorize',     :as => :authorize, :via => [:get, :post]
+    match '/oauth',               :to => 'oauth#index',         :as => :oauth, :via => [:get, :post]
+    match '/oauth/revoke', :to => 'oauth#revoke', :via => [:get, :post]
+    match '/oauth/revoke',        :to => 'oauth#revoke',        :as => :oauth_revoke, :via => [:get, :post]
+    match '/oauth/invalidate',    :to => 'oauth#invalidate',    :as => :oauth_invalidate, :via => [:get, :post]
+    match '/oauth/capabilities',  :to => 'oauth#capabilities',  :as => :oauth_capabilities, :via => [:get, :post]
 
-    match '/analytics/dashboard', :to => 'analytics_dashboard#dashboard'
-    match '/analytics/signup_by_date', :to => 'analytics_dashboard#signup_by_date'
-    match '/analytics/environment_by_date', :to => 'analytics_dashboard#environment_by_date'
-    match '/analytics/course_by_date', :to => 'analytics_dashboard#course_by_date'
-    match '/analytics/post_by_date', :to => 'analytics_dashboard#post_by_date'
+    match '/analytics/dashboard', :to => 'analytics_dashboard#dashboard', :via => [:get, :post]
+    match '/analytics/signup_by_date', :to => 'analytics_dashboard#signup_by_date', :via => [:get, :post]
+    match '/analytics/environment_by_date', :to => 'analytics_dashboard#environment_by_date', :via => [:get, :post]
+    match '/analytics/course_by_date', :to => 'analytics_dashboard#course_by_date', :via => [:get, :post]
+    match '/analytics/post_by_date', :to => 'analytics_dashboard#post_by_date', :via => [:get, :post]
 
-    match '/search' => 'search#index', :as => :search
+    match '/search' => 'search#index', :as => :search, :via => [:get, :post]
     # Rota para todos os ambientes em geral e quando houver mais de um filtro selecionado
-    match '/search/environments' => 'search#environments', :as => :search_environments
-    match '/search/profiles' => 'search#profiles', :as => :search_profiles
+    match '/search/environments' => 'search#environments', :as => :search_environments, :via => [:get, :post]
+    match '/search/profiles' => 'search#profiles', :as => :search_profiles, :via => [:get, :post]
 
     post "presence/auth"
     post "presence/multiauth"
@@ -28,7 +28,7 @@ Redu::Application.routes.draw do
     get "presence/last_messages_with"
     get "vis/dashboard/teacher_participation_interaction"
 
-    match '/jobs/notify' => 'jobs#notify', :as => :notify
+    match '/jobs/notify' => 'jobs#notify', :as => :notify, :via => [:get, :post]
     resources :statuses, :only => [:show, :create, :destroy] do
       member do
         post :respond
@@ -36,9 +36,9 @@ Redu::Application.routes.draw do
     end
 
     # sessions routes
-    match '/signup' => 'users#new', :as => :signup
+    match '/signup' => 'users#new', :as => :signup, :via => [:get, :post]
     get '/login' => 'sessions#new', :as => :login
-    match '/logout' => 'sessions#destroy', :as => :logout
+    match '/logout' => 'sessions#destroy', :as => :logout, :via => [:get, :post]
 
     # Authentications
     resources :authentications, :only => [:create]
@@ -51,13 +51,13 @@ Redu::Application.routes.draw do
     post '/recover_password' => 'users#recover_password', :as => :recover_password
 
     match '/resend_activation' => 'users#resend_activation',
-      :as => :resend_activation
-    match '/account/edit' => 'users#edit_account', :as => :edit_account_from_email
+      :as => :resend_activation, :via => [:get, :post]
+    match '/account/edit' => 'users#edit_account', :as => :edit_account_from_email, :via => [:get, :post]
     resources :sessions, :only => [:new, :create, :destroy]
 
     # site routes
-    match '/about' => 'base#about', :as => :about
-    match 'contact' => 'base#contact', :as => :contact
+    match '/about' => 'base#about', :as => :about, :via => [:get, :post]
+    match 'contact' => 'base#contact', :as => :contact, :via => [:get, :post]
 
     # Space
     resources :spaces, :except => [:index] do
@@ -160,11 +160,11 @@ Redu::Application.routes.draw do
 
     resources :oauth_clients, :only => :new
 
-    match 'users/activate/:id' => 'users#activate', :as => :activate
+    match 'users/activate/:id' => 'users#activate', :as => :activate, :via => [:get, :post]
 
     # Indexes
-    match 'contact' => "base#contact", :as => :contact
-    match '/teach' => 'base#teach_index', :as => :teach_index
+    match 'contact' => "base#contact", :as => :contact, :via => [:get, :post]
+    match '/teach' => 'base#teach_index', :as => :teach_index, :via => [:get, :post]
     get '/environments' => 'environments#index', :as => :environments_index
 
     resources :plans, :only => [] do
@@ -182,8 +182,8 @@ Redu::Application.routes.draw do
     end
 
     match '/payment/callback' => 'payment_gateway#callback',
-      :as => :payment_callback
-    match '/payment/success' => 'payment_gateway#success', :as => :payment_success
+      :as => :payment_callback, :via => [:get, :post]
+    match '/payment/success' => 'payment_gateway#success', :as => :payment_success, :via => [:get, :post]
 
     resources :partners, :only => [:show, :index] do
       member do
@@ -309,7 +309,7 @@ Redu::Application.routes.draw do
       resources :asset_reports, :path => "progress", :only => [:index]
     end
 
-    match 'me' => 'users#show'
+    get 'me' => 'users#show'
 
     resources :statuses, :only => [:show, :destroy] do
       resources :answers, :only => [:index, :create]
@@ -337,15 +337,18 @@ Redu::Application.routes.draw do
 
     match "vis/spaces/:space_id/lecture_participation",
       :to => 'vis#lecture_participation',
-      :as => :vis_lecture_participation
+      :as => :vis_lecture_participation,
+      :via => [:get, :post]
     match "vis/spaces/:space_id/subject_activities",
       :to => 'vis#subject_activities',
-      :as => :vis_subject_activities
+      :as => :vis_subject_activities,
+      :via => [:get, :post]
     match "vis/spaces/:space_id/students_participation",
       :to => 'vis#students_participation',
-      :as => :vis_students_participation
+      :as => :vis_students_participation,
+      :via => [:get, :post]
 
     # Captura exceções ActionController::RoutingError
-    match '/404', :to => 'api#routing_error'
+    match '/404', :to => 'api#routing_error', :via => [:get, :post]
   end
 end
