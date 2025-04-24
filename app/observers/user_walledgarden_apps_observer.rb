@@ -5,9 +5,9 @@ class UserWalledgardenAppsObserver < ActiveRecord::Observer
   observe User
 
   def after_create(user)
-    applications.each do |app|
-      Oauth2Token.create(:client_application => app, :user => user)
-    end
+    # applications.each do |app|
+    #   Oauth2Token.create(:client_application => app, :user => user)
+    # end
     user.update_attributes({ :updated_at => Time.zone.now })
   end
 

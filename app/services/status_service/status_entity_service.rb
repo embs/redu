@@ -18,7 +18,7 @@ module StatusService
     private
 
     def statuses_ids
-      statusable.statuses.values_of(:id)
+      statusable.statuses.pluck(:id)
     end
   end
 end

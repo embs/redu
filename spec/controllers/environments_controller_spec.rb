@@ -310,7 +310,7 @@ describe EnvironmentsController do
       it 'sets flash properly' do
         post_destroy_members(@environment, @users[0..1])
 
-        should set_the_flash.to("Os usuários foram removidos do ambiente #{@environment.name}")
+        expect(flash[:notice]).to eq("Os usuários foram removidos do ambiente #{@environment.name}")
       end
     end
   end

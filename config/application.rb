@@ -2,11 +2,12 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-require 'oauth/rack/oauth_filter'
+# require 'oauth/rack/oauth_filter'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
-  Bundler.require *Rails.groups(:assets => %w(development test))
+  # Bundler.require *Rails.groups(:assets => %w(development test))
+  Bundler.require(*Rails.groups)
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
@@ -254,7 +255,7 @@ module Redu
     config.overview_logger = config.overview_logger['config']
 
     #Oauth
-    config.middleware.use OAuth::Rack::OAuthFilter
+    # config.middleware.use OAuth::Rack::OAuthFilter
 
     # Seta as exceções da aplicação
     config.exceptions_app = self.routes
@@ -280,8 +281,8 @@ module Redu
 
     # Seta locale defaul para pt-br
     config.i18n.default_locale = :"pt-BR"
-    I18n.locale = config.i18n.default_locale
     I18n.available_locales = [config.i18n.default_locale]
+    I18n.locale = config.i18n.default_locale
 
     # Quantidade de resultados da busca exibidos por páginas
     config.search_results_per_page = 10

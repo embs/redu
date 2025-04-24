@@ -14,8 +14,8 @@ module StatusService
     attr_accessor :space
 
     def lectures_ids
-      subjects_ids = space.subjects.values_of(:id)
-      Lecture.by_subjects(subjects_ids).values_of(:id)
+      subjects_ids = space.subjects.pluck(:id)
+      Lecture.by_subjects(subjects_ids).pluck(:id)
     end
   end
 end

@@ -49,7 +49,7 @@ class Environment < ActiveRecord::Base
   validates_length_of :name, :maximum => 40
   validates_length_of :description, :maximum => 400, :allow_blank => true
   validates_length_of :initials, :maximum => 10
-  validates_format_of :path, :with => /^[-_A-Za-z0-9]*$/
+  validates_format_of :path, :with => /\A[-_A-Za-z0-9]*\z/
 
   accepts_nested_attributes_for :courses
 

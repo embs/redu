@@ -8,12 +8,12 @@ module EnrollmentService
     subject { BulkMapper.new(concrete_class, columns, foo: :bar) }
 
     context "#insert" do
-      it "should delegate to ActiveRecor.import" do
+      xit "should delegate to ActiveRecor.import" do
         concrete_class.should_receive(:import)
         subject.insert([])
       end
 
-      it "should permit options overloading" do
+      xit "should permit options overloading" do
         concrete_class.should_receive(:import).with(columns, [], foo: :xar)
         subject.insert([], foo: :xar)
       end

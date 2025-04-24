@@ -34,7 +34,7 @@ module EnrollmentService
       enrollments = service.create(users: users, role: opts[:role])
 
       untied_adapter.notify_after_create(enrollments)
-      vis_adapter.notify_enrollment_creation(enrollments)
+      # vis_adapter.notify_enrollment_creation(enrollments)
 
       enrollments
     end
@@ -48,7 +48,7 @@ module EnrollmentService
 
       enrollments = enrollment_service.get_enrollments_for(users)
       untied_adapter.notify_after_destroy(enrollments)
-      notify_enrollment_removal(enrollments)
+      # notify_enrollment_removal(enrollments)
 
       enrollment_service.destroy(users)
     end

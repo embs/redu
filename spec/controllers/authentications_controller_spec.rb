@@ -25,8 +25,10 @@ describe AuthenticationsController do
           UserSession.find.user.should == user
         end
 
-        it { should set_the_flash.
-             to(I18n.t("facebook_connect_account_association")) }
+        it 'sets the flash' do
+          expect(flash[:notice]).to eq I18n.t("facebook_connect_account_association")
+        end
+
         it { should redirect_to(controller.home_user_path(user))  }
       end
 
@@ -42,7 +44,10 @@ describe AuthenticationsController do
           UserSession.find.user.should == User.last
         end
 
-        it { should set_the_flash.to(I18n.t("thanks_youre_now_logged_in")) }
+        it 'sets the flash' do
+          expect(flash[:notice]).to eq I18n.t("thanks_youre_now_logged_in")
+        end
+
         it { should redirect_to(controller.home_user_path(User.last))  }
       end
     end
@@ -87,7 +92,10 @@ describe AuthenticationsController do
         controller.params[:opened_signup_modal].should == "open-me"
       end
 
-      it { should set_the_flash.to(I18n.t("facebook_connect_error")) }
+      it 'sets the flash' do
+        expect(flash[:error]).to eq I18n.t("facebook_connect_error")
+      end
+
       it { should render_template('base/site_index') }
     end
 
@@ -178,7 +186,10 @@ describe AuthenticationsController do
       get :fallback, :locale => 'pt-BR'
     end
 
-    it { should set_the_flash.to(I18n.t("you_need_give_us_access_to_your_facebook_data")) }
+    it 'sets the flash' do
+      expect(flash[:error]).to eq I18n.t("you_need_give_us_access_to_your_facebook_data")
+    end
+
     it { should redirect_to(controller.home_path)  }
   end
 end

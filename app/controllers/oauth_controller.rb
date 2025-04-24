@@ -1,9 +1,9 @@
 # -*- encoding : utf-8 -*-
-require 'oauth/controllers/provider_controller'
-require 'oauth/provider/authorizer'
+# require 'oauth/controllers/provider_controller'
+# require 'oauth/provider/authorizer'
 
 class OauthController < ApplicationController
-  include OAuth::Controllers::ProviderController
+  # include OAuth::Controllers::ProviderController
   layout 'new_application'
 
   rescue_from CanCan::AccessDenied, :with => :deny_access

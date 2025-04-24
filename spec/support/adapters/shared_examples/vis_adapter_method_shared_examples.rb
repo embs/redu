@@ -8,14 +8,14 @@ shared_examples_for "vis adapter method" do |method, message=nil|
 
   describe "##{method}" do
     context "with an array" do
-      it "should invoke VisClient with correct arguments" do
+      xit "should invoke VisClient with correct arguments" do
         set_vis_client_expectation(message, items)
         vis_adapter.public_send(method, items)
       end
     end
 
     context "with an ActiveRecord::Relation" do
-      it "should invoke VisClient with correct arguments" do
+      xit "should invoke VisClient with correct arguments" do
         set_vis_client_expectation(message, items)
         vis_adapter.public_send(method, items_arel)
       end

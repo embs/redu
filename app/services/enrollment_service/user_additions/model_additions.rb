@@ -21,7 +21,7 @@ module EnrollmentService
       end
 
       def subjects_ids
-        self.enrollments.values_of(:subject_id)
+        self.enrollments.pluck(:subject_id)
       end
     end
   end

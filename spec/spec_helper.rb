@@ -48,7 +48,7 @@ RSpec.configure do |config|
   config.include UserAgentSpecHelper
 
   # Desabilita criação de logs nos specs
-  ActiveRecord::Observer.disable_observers
+  # ActiveRecord::Observer.disable_observers
 
   config.before(:each) do
     WebMock.allow_net_connect!

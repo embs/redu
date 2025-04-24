@@ -11,21 +11,24 @@ module StatusService
       class StatusService::DummyHierarchyAggregator < Struct.new(:dummy) ; end
 
       subject { ::Dummy.new }
-      let(:facade) { mock("Facade") }
+      let(:facade) { double("Facade") }
 
       describe "#activities" do
         it "should invoke Facade#activities with aggregator and relation" do
           mock_facade(facade)
-          facade.should_receive(:activities).
-            with(DummyHierarchyAggregator.new(subject),
-                 an_instance_of(ActiveRecord::Relation))
+
+          expect(facade).to receive(:activities) do |aggregator_arg, relation_arg|
+            expect(aggregator_arg).to be_a(DummyHierarchyAggregator)
+            expect(aggregator_arg.dummy).to eq subject
+            expect(relation_arg).to be_an(ActiveRecord::Relation)
+          end
 
           subject.activities
         end
       end
 
       def mock_facade(m)
-        Facade.stub(:instance).and_return(m)
+        allow(Facade).to receive(:instance).and_return(m)
       end
     end
   end

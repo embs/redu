@@ -38,7 +38,7 @@ class FoldersController < BaseController
   def do_the_upload
     authorize! :upload_file, @folder
 
-    service = MyfileService.new(params[:myfile])
+    service = MyfileService.new(params.require(:myfile).permit(:folder_id, :attachment))
     @myfile = service.create do |myfile|
       myfile.user = current_user
     end

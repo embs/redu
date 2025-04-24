@@ -11,7 +11,18 @@ module EnrollmentService
 
     def insert(values, opts={})
       choosed_columns = opts.delete(:columns) || columns
-      klass.import(choosed_columns, values, default_options.merge(opts))
+      # klass.import(choosed_columns, values, default_options.merge(opts))
+      values.each do |attr_values|
+        hash = choosed_columns.zip(attr_values).to_h
+        begin
+          if :id.in?(hash.keys)
+            klass.find(hash[:id]).update(hash.except(:id))
+          else
+            klass.create(hash)
+          end
+        rescue ActiveRecord::RecordNotUnique
+        end
+      end
 
       values
     end

@@ -5,7 +5,7 @@ module EnrollmentService
   describe Subject do
     subject { FactoryGirl.create(:subject, space: nil) }
     let(:user) { FactoryGirl.create(:user) }
-    let(:facade) { mock("Facade") }
+    let(:facade) { double("Facade") }
     let(:lectures) do
       subjects.each { |s| FactoryGirl.create(:lecture, subject: s) }
       Lecture.where(subject_id: subjects)
@@ -27,8 +27,9 @@ module EnrollmentService
         facade.stub(:notify_enrollment_creation)
         facade.stub(:update_grade)
 
-        facade.should_receive(:create_enrollment).with(subjects, users,
+        expect(facade).to receive(:create_enrollment).with(subjects, users,
                                                        role: Role[:member])
+
         Subject.enroll(subjects, users: users)
       end
 
@@ -153,7 +154,7 @@ module EnrollmentService
     end
 
     def mock_facade(m)
-      Facade.stub(:instance).and_return(m)
+      allow(Facade).to receive(:instance).and_return(m)
     end
   end
 end

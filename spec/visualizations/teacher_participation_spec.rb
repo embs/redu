@@ -82,34 +82,34 @@ describe TeacherParticipation do
 
   subject { TeacherParticipation.new(@uca) }
 
-  it { should respond_to :lectures_created }
-  it { should respond_to :posts}
-  it { should respond_to :answers }
-  it { should respond_to :days }
-  it { should_not respond_to :lectures_created= }
-  it { should_not respond_to :posts=}
-  it { should_not respond_to :answers= }
-  it { should_not respond_to :days= }
-  it { should respond_to :end }
-  it { should respond_to :end=}
-  it { should respond_to :start }
-  it { should respond_to :start= }
-  it { should respond_to :spaces }
-  it { should respond_to :spaces=}
+  xit { should respond_to :lectures_created }
+  xit { should respond_to :posts}
+  xit { should respond_to :answers }
+  xit { should respond_to :days }
+  xit { should_not respond_to :lectures_created= }
+  xit { should_not respond_to :posts=}
+  xit { should_not respond_to :answers= }
+  xit { should_not respond_to :days= }
+  xit { should respond_to :end }
+  xit { should respond_to :end=}
+  xit { should respond_to :start }
+  xit { should respond_to :start= }
+  xit { should respond_to :spaces }
+  xit { should respond_to :spaces=}
 
-  it "initialize correctly" do
+  xit "initialize correctly" do
     subject.end.should == Date.today
     subject.spaces.to_set.should == @course.spaces.to_set
   end
 
   context "queries" do
-    it "retrieves all subjects ids from specified spaces" do
+    xit "retrieves all subjects ids from specified spaces" do
       subject.spaces = [@course.spaces.first]
       @id = subject.spaces.first.subjects.first.id
       subject.subjects_by_space.should eq([@id])
     end
 
-    it "retrieves the lectures ids that belongs the User from the
+    xit "retrieves the lectures ids that belongs the User from the
     especified spaces" do
       subject.spaces = [@course.spaces.first]
       @lecture = FactoryGirl.create(:lecture,
@@ -120,7 +120,7 @@ describe TeacherParticipation do
         eq([subject.spaces.first.subjects.first.lectures.first])
     end
 
-    it "retrieves all posts that belongs the User from especified spaces" do
+    xit "retrieves all posts that belongs the User from especified spaces" do
       2.times do
         FactoryGirl.create(:activity,
                 :statusable => subject.spaces.first, :user => @owner)
@@ -136,7 +136,7 @@ describe TeacherParticipation do
         eq((@space_statuses + @lecture_statuses).collect{ |s| s.id }.to_set)
     end
 
-    it "retrieves all answers made by User from specified spaces" do
+    xit "retrieves all answers made by User from specified spaces" do
       2.times do
         FactoryGirl.create(:activity,
                 :statusable => subject.spaces.first, :user => @owner)

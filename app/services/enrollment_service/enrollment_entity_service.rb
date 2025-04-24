@@ -52,7 +52,7 @@ module EnrollmentService
     def destroy(users)
       enrollments = Enrollment.where(subject_id: subjects, user_id: users)
 
-      Enrollment.delete_all(["id IN (?)", enrollments.values_of(:id)])
+      Enrollment.delete_all(["id IN (?)", enrollments.pluck(:id)])
     end
 
     # Atualiza grade dos Enrollments passados na inicialização baseado nos
